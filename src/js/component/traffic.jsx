@@ -5,9 +5,16 @@ const Traffic = () => {
   const [currentColor, setCurrentColor] = useState(0);
 
   const changeLight = () => {
-    // Increment the index, and wrap around if it goes beyond the array length
     setCurrentColor((prevIndex) => (prevIndex + 1) % colors.length);
   };
+
+  const changeToPurple = () => {
+    setColor (["purple", ...colors.slice (1)]);
+
+    setCurrentColor ((prevIndex)=> prevIndex >=colors.length ? colors.length - 1 : prevIndex);
+  };
+
+
 
   return (
     <div className="container">
@@ -28,6 +35,13 @@ const Traffic = () => {
         onClick={changeLight}
       >
         Change Light
+      </button>
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={changeToPurple}
+      >
+        Change to Purple
       </button>
     </div>
   );
